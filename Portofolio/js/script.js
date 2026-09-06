@@ -1,8 +1,3 @@
-// Web profil ini masih statis (belum butuh interaksi JS yang rumit).
-// File ini disiapkan dari awal supaya struktur folder (css/js/img) sudah rapi
-// sejak awal — ini salah satu poin penilaian asesor.
-
-// Highlight menu navbar sesuai section yang sedang dilihat (scrollspy ringan)
 const sections = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('.nav-links a');
 

@@ -21,9 +21,7 @@ create table if not exists produk (
 alter table kategori enable row level security;
 alter table produk enable row level security;
 
--- KEBIJAKAN AKSES: untuk latihan, semua orang (anon) boleh baca & kelola data
--- CATATAN: ini longgar/tidak aman untuk aplikasi produksi sungguhan,
--- tapi cukup untuk kebutuhan latihan uji kompetensi (tanpa sistem login).
+-- POLICY
 create policy "Publik boleh baca kategori" on kategori
   for select using (true);
 create policy "Publik boleh kelola kategori" on kategori

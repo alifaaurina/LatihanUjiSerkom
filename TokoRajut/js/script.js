@@ -1,22 +1,14 @@
-// ==========================================================
-// KONEKSI SUPABASE
-// Ganti 2 nilai di bawah ini sesuai punya kamu:
-// Project Settings -> API -> Project URL & anon public key
-// ==========================================================
 const SUPABASE_URL = 'https://lbalqunwxodkpkgcwmkp.supabase.co';
 const SUPABASE_ANON_KEY =
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxiYWxxdW53eG9ka3BrZ2N3bWtwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODg2MDgzMjUsImV4cCI6MjEwNDE4NDMyNX0.6L-czMTWnxDCsiPN5rY3Qz3YoQ7IlLpIr8PW4BrPAvk';
 
-// PENTING: dinamai "supabaseClient", BUKAN "supabase" -- karena "supabase"
-// sudah dipakai oleh library CDN-nya sendiri (window.supabase), kalau nama
-// bentrok, browser error "Identifier 'supabase' has already been declared"
 const supabaseClient = window.supabase.createClient(
   SUPABASE_URL,
   SUPABASE_ANON_KEY
 );
 
 let products = [];
-let kategoriMap = {}; // { 'Syal': 1, 'Topi': 2, 'Tas': 3 }
+let kategoriMap = {};
 let activeCategory = 'Semua';
 let searchTerm = '';
 let editingId = null;
