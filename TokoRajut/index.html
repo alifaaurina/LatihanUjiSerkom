@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AURINA - TokoRajut</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <a href="../Portofolio/index.html" class="back-link">
+      <i class="fa-solid fa-arrow-left"></i> Kembali ke Portofolio
+    </a>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1>Lyffa Rajut Collection</h1>
+    <p>Sempurnakan gayamu dengan koleksi rajut buatan tangan yang unik dan berkualitas.</p>
+  </section>
+
+  <!-- TOOLBAR FILTER -->
+  <section class="toolbar">
+    <div class="category-filter" id="categoryFilter">
+      <button class="chip active" data-category="Semua">Semua</button>
+      <button class="chip" data-category="Syal">Syal</button>
+      <button class="chip" data-category="Topi">Topi</button>
+      <button class="chip" data-category="Tas">Tas</button>
+      <button class="chip" data-category="Atasan">Atasan</button>
+      <button class="chip" data-category="Aksesoris">Aksesoris</button>
+    </div>
+    <div class="search-box">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" id="searchInput" placeholder="Cari produk...">
+    </div>
+  </section>
+
+  <!-- SECTION UTAMA PRODUK -->
+  <section class="section">
+    <div class="section-title-area">
+      <h2>Koleksi Rajutan Kami</h2>
+      <button class="btn-toggle-form" id="toggleFormBtn">
+        <i class="fa-solid fa-plus"></i> Tambah Produk
+      </button>
+    </div>
+
+    <!-- FORM INLINE TAMBAH/EDIT PRODUK (TERSEMBUNYI SECARA DEFAULT) -->
+    <div class="form-container" id="formContainer" style="display: none;">
+      <div class="form-header">
+        <h3 id="formTitle">Tambah Produk Baru</h3>
+        <button class="btn-close-form" id="closeFormBtn" title="Tutup Form">&times;</button>
+      </div>
+      <form id="productForm" class="inline-form">
+        <input type="hidden" id="productId">
+
+        <div class="form-group">
+          <label for="productName">Nama Produk</label>
+          <input type="text" id="productName" placeholder="Masukkan nama produk" required>
+        </div>
+
+        <div class="form-group">
+          <label for="productCategory">Kategori</label>
+          <select id="productCategory" required>
+            <option value="Syal">Syal</option>
+            <option value="Topi">Topi</option>
+            <option value="Tas">Tas</option>
+            <option value="Atasan">Atasan</option>
+            <option value="Aksesoris">Aksesoris</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="productPrice">Harga (Rp)</label>
+          <input type="number" id="productPrice" placeholder="Contoh: 85000" min="0" required>
+        </div>
+
+        <div class="form-group form-group-grow">
+          <label for="productImage">URL Gambar Produk</label>
+          <input type="url" id="productImage" placeholder="https://..." required>
+        </div>
+
+        <div class="form-group form-group-grow">
+          <label for="productDeskripsi">Deskripsi Produk</label>
+          <textarea id="productDeskripsi" rows="3" placeholder="Tulis deskripsi singkat produk..."></textarea>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="btn-secondary" id="cancelFormBtn">Batal</button>
+          <button type="submit" class="btn-primary" id="submitFormBtn">
+            <i class="fa-solid fa-plus"></i> Tambah
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- GRID CARD PRODUK -->
+    <div class="product-grid" id="productGrid"></div>
+    <p class="empty-msg" id="emptyMsg" style="display:none;">Tidak ada produk yang cocok.</p>
+  </section>
+
+  <!-- MODAL DETAIL PRODUK -->
+  <div class="detail-overlay" id="detailOverlay">
+    <div class="detail-modal">
+      <button class="detail-close" id="detailCloseBtn" title="Tutup">&times;</button>
+      <div class="detail-body">
+        <span class="category-tag" id="detailCategory"></span>
+        <h2 id="detailName"></h2>
+        <div class="detail-price" id="detailPrice"></div>
+        <p class="detail-desc" id="detailDesc"></p>
+      </div>
+      <img src="" alt="" class="detail-image" id="detailImage">
+    </div>
+  </div>
+
+  <!-- MODAL KONFIRMASI HAPUS -->
+  <div class="delete-overlay" id="deleteOverlay">
+    <div class="delete-modal">
+      <h3>Hapus Produk?</h3>
+      <p id="deleteMessage">Apakah kamu yakin ingin menghapus produk ini?</p>
+      <div class="delete-actions">
+        <button type="button" class="btn-secondary" id="deleteCancelBtn">Batal</button>
+        <button type="button" class="btn-danger" id="deleteConfirmBtn">Ya, Hapus</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>&copy; 2026 Lyffa Rajut Collection. Latihan Uji Kompetensi Junior Web Developer.</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
